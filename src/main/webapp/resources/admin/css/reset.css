@@ -1,0 +1,43 @@
+@charset "utf-8"; 
+
+/**********************************************************************
+- Reset Style
+-----------------------------------------------------------------------
+* Descript : 브라우저별 특성 스타일을 초기화 시키는 CSS
+             해당 CSS STYLE 은 모든 사이트 공통으로 들어가는 것으로
+			 개별 사이트 스타일을 위한 수정을 금한다.
+-----------------------------------------------------------------------
+* 최초작성일 : 2017.04.19
+* 최초작성자 : 더웹 박현정
+
+* 최후작성일 : 2017.04.19
+* 최후작성자 : 더웹 박현정
+**********************************************************************/
+
+
+/* Reset */
+* {margin:0; padding:0;}
+
+body { position: relative; -webkit-text-size-adjust:none}
+input, select, textarea { vertical-align:middle; -webkit-box-sizing:border-box; box-sizing:border-box; border-radius:0}
+input::-ms-clear, input::-ms-reveal {display:none}
+input::-webkit-search-cancel-button {-moz-appearance:none; -webkit-appearance:none; appearance:none}
+input::-webkit-clear-button, input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {display:none; -moz-appearance:none; -webkit-appearance:none; appearance:none}
+button {background:none; border:0; border-radius:0; overflow:visible; cursor:pointer}
+textarea {resize:none}
+label {vertical-align:middle; cursor:pointer}
+a {color:inherit; text-decoration:none}
+a:active, a:hover, a:focus {text-decoration:none}
+h1, h2, h3, h4, h5, h6 {font-size:100%}
+i,em,address,del,small{font-style:normal}
+ol, ul, li {list-style:none}
+img, fieldset {border:0}
+table {border:0; border-spacing:0; border-collapse: collapse;}
+legend {visibility:hidden; position:absolute; left:-5000px; font-size:0; line-height:0}
+caption {visibility:hidden; text-indent:-5000px; font-size:0; line-height:0}
+hr {display:none}
+img {max-width:100%}
+button, select, input {outline:none}
+form {display:block; margin-top:0em}
+
+

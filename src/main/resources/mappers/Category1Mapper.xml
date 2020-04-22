@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.Category1Mapper">
+
+	<select id="selectAll" resultType="Category1VO">
+		select * from category1 order by no asc
+	</select>
+	
+	<select id="selectOne" resultType="Category1VO">
+		select * from category1 where no=#{no}
+	</select>
+	
+	<insert id="insert">
+		insert into category1 values(0, #{name})
+	</insert>
+	
+	<update id="update">
+		update category1 set name=#{name} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from category1 where no=#{no}
+	</delete>
+	
+	<select id="listSearch" resultType="Category1VO">
+		select * from category1 where no>0 <include refid="search"></include> order by no desc limit #{pageStart},#{perPageNum}  
+	</select>
+	
+	<sql id="search">
+		<if test="searchType=='t'.toString()">
+			and title like concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='c'.toString()">
+			and content like concat('%',#{keyword},'%') 
+		</if>
+		<if test="searchType=='w'.toString()">
+			and writer=#{keyword}
+		</if>
+	</sql>
+	
+	<select id="listSearchCount" resultType="int">
+		select count(no) from category1 where no>0 <include refid="search"></include>
+	</select>
+	
+</mapper>

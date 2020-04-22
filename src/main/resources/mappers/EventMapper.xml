@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.EventMapper">
+
+	<select id="selectAll" resultType="EventVO">
+		select * from event order by kind1 asc
+	</select>
+	
+	<select id="selectOne" resultType="EventVO">
+		select * from event where no=#{no}
+	</select>
+	
+	<select id="selectByDate" resultType="EventVO">
+		select * from event where date(start_date) <![CDATA[<=]]> date(#{select_date}) and date(end_date) <![CDATA[>=]]> date(#{select_date})
+	</select>
+	
+	<insert id="insert">
+		insert into event values(0, #{title}, #{start_date}, #{end_date}, #{content}, #{price}, #{thumb_origin}, #{thumb_stored}, #{regdate})
+	</insert>
+	
+	<update id="update">
+		update event set title=#{title}, start_date=#{start_date}, end_date=#{end_date}, content=#{content}, price=#{price}, thumb_origin=#{thumb_origin}, thumb_stored=#{thumb_stored}, regdate=#{regdate} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from event where no=#{no}
+	</delete>
+	
+	<select id="listSearch" resultType="EventVO">
+		select * from event where no>0 <include refid="search"></include> order by no desc limit #{pageStart},#{perPageNum}  
+	</select>
+	
+	<sql id="search">
+		<if test="searchType=='t'.toString()">
+			and title like concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='c'.toString()">
+			and content like concat('%',#{keyword},'%') 
+		</if>
+		<if test="searchType=='w'.toString()">
+			and writer=#{keyword}
+		</if>
+	</sql>
+	
+	<select id="listSearchCount" resultType="int">
+		select count(no) from event where no>0 <include refid="search"></include>
+	</select>
+	
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.HospitalTimeMapper">
+	<select id="selectAll" resultType="HospitalTimeVO">
+		select * from hospital_time order by no asc
+	</select>
+	
+	<select id="selectOne" resultType="HospitalTimeVO">
+		select * from hospital_time where no=#{no}
+	</select>
+	
+	<select id="selectByDow" resultType="HospitalTimeVO">
+		select * from hospital_time where h_date=#{h_date}
+	</select>
+	
+	<insert id="insert">
+		insert into hospital_time values(0, #{h_date}, #{start_time}, #{end_time})
+	</insert>
+	
+	<update id="update">
+		update hospital_time set start_time=#{start_time}, end_time=#{end_time} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from hospital_time where no=#{no}
+	</delete>
+	
+</mapper>

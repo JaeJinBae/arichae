@@ -1,0 +1,42 @@
+@charset "utf-8"; 
+/**********************************************************************
+* Descript : 폰트 불러오기
+-----------------------------------------------------------------------
+* 최초작성일 : 2018.04.04
+* 최초작성자 : 더웹 유대경
+***********************************************************************/
+
+@import url(../../fonts/nanumsquare/nanumsquare.css);
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
+
+
+@font-face {
+	font-family: 'NanumGothic';
+	font-style: normal;
+	font-weight: 300;
+	src: url(../../fonts/NanumGothic/NanumGothicLight.woff2) format('woff2'),url(../../fonts/NanumGothic/NanumGothicLight.woff) format('woff'),url(../../fonts/NanumGothic/NanumGothicLight.otf) format('opentype');
+}
+
+
+@font-face {
+	font-family: 'NanumGothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../../fonts/NanumGothic/NanumGothic.woff2) format('woff2'),url(../../fonts/NanumGothic/NanumGothic.woff) format('woff'),url(../../fonts/NanumGothic/NanumGothic.otf) format('opentype');
+}
+
+
+@font-face {
+	font-family: 'NanumGothic';
+	font-style: normal;
+	font-weight: 500;
+	src: url(../../fonts/NanumGothic/NanumGothicBold.woff2) format('woff2'),url(../../fonts/NanumGothic/NanumGothicBold.woff) format('woff'),url(../../fonts/NanumGothic/NanumGothicBold.otf) format('opentype');
+}
+
+
+@font-face {
+	font-family: 'NanumGothic';
+	font-style: normal;
+	font-weight: 600;
+	src: url(../../fonts/NanumGothic/NanumGothicExtraBold.woff2) format('woff2'),url(../../fonts/NanumGothic/NanumGothicExtraBold.woff) format('woff'),url(../../fonts/NanumGothic/NanumGothicExtraBold.otf) format('opentype');
+}

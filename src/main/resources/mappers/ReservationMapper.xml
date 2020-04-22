@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.ReservationMapper">
+
+	<select id="selectOne" resultType="ReservationVO">
+		select * from reservation where no=#{no}
+	</select>
+	
+	<insert id="insert">
+		insert into reservation values(0, #{regdate}, #{clinic_list}, #{price}, #{counseling}, #{res_date}, #{res_time}, #{name}, #{phone}, #{email}, #{memo}, #{res_state})
+	</insert>
+	
+	<update id="update">
+		update reservation set counseling=#{counseling}, name=#{name}, phone=#{phone}, email=#{email}, memo=#{memo}, res_state=#{res_state} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from reservation where no=#{no}
+	</delete>
+	
+	<select id="listSearch" resultType="ReservationVO">
+		select * from reservation where no>0 <include refid="search"></include> order by no desc, regdate desc limit #{pageStart},#{perPageNum}
+	</select>
+	
+	<sql id="search">
+		<if test="searchType=='n'.toString()">
+			and name like concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='p'.toString()">
+			and phone like concat('%',#{keyword},'%') 
+		</if>
+	</sql>
+	
+	<select id="listSearchCount" resultType="int">
+		select count(no) from reservation where no>0 <include refid="search"></include>
+	</select>
+	
+</mapper>

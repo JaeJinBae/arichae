@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.ClinicMapper">
+
+	<select id="selectAll" resultType="ClinicVO">
+		select * from clinic order by kind1 asc
+	</select>
+	
+	<select id="selectOne" resultType="ClinicVO">
+		select * from clinic where no=#{no}
+	</select>
+	
+	<select id="selectByKind1" resultType="ClinicVO">
+		select * from clinic where kind1=#{kind1}
+	</select>
+	
+	<insert id="insert">
+		insert into clinic values(0, #{kind1}, #{kind1nm}, #{kind2}, #{kind2nm}, #{name}, #{code}, #{price_before}, #{price_after}, #{discount}, #{popular})
+	</insert>
+	
+	<update id="update">
+		update clinic set kind1=#{kind1}, kind1nm=#{kind1nm}, kind2=#{kind2}, kind2nm=#{kind2nm}, name=#{name}, code=#{code}, price_before=#{price_before}, price_after=#{price_after}, discount=#{discount}, popular=#{popular} where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from clinic where no=#{no}
+	</delete>
+	
+	<select id="listSearch" resultType="ClinicVO">
+		select * from clinic where no>0 <include refid="search"></include> order by no desc limit #{pageStart},#{perPageNum}  
+	</select>
+	
+	<sql id="search">
+		<if test="searchType=='t'.toString()">
+			and title like concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='c'.toString()">
+			and content like concat('%',#{keyword},'%') 
+		</if>
+		<if test="searchType=='w'.toString()">
+			and writer=#{keyword}
+		</if>
+	</sql>
+	
+	<select id="listSearchCount" resultType="int">
+		select count(no) from clinic where no>0 <include refid="search"></include>
+	</select>
+	
+</mapper>
